@@ -1,6 +1,8 @@
 package com.coekie.aocutil;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public record Grid(char[][] grid) {
   public static Grid parse(String input) {
@@ -36,6 +38,12 @@ public record Grid(char[][] grid) {
 
   public Grid copy() {
     return new Grid(Arrays.stream(grid).map(char[]::clone).toArray(char[][]::new));
+  }
+
+  public Stream<Location> locations() {
+    return IntStream.range(0, width())
+        .boxed()
+        .flatMap(x -> IntStream.range(0, height()).mapToObj(y -> new Location(x, y)));
   }
 
   @Override
