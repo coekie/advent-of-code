@@ -13,4 +13,12 @@ public record Location(int x, int y) {
   public Location step(Direction direction, int steps) {
     return new Location(x + steps * direction.dx, y + steps * direction.dy);
   }
+
+  public Location plus(Location o) {
+    return new Location(x + o.x, y + o.y);
+  }
+
+  public Location minus(Location o) {
+    return new Location(x - o.x, y - o.y);
+  }
 }

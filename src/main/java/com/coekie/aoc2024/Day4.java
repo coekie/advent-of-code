@@ -23,16 +23,12 @@ public class Day4 {
   private static boolean xmas(Grid grid, Location start, Location direction) {
     String xmas = "XMAS";
     Location location = start;
-    for (int i = 0; i < xmas.length(); i++, location = plus(location, direction)) {
+    for (int i = 0; i < xmas.length(); i++, location = location.plus(direction)) {
       if (!(grid.isInBounds(location) && grid.get(location) == xmas.charAt(i))) {
         return false;
       }
     }
     return true;
-  }
-
-  private static Location plus(Location a, Location b) {
-    return new Location(a.x() + b.x(), a.y() + b.y());
   }
 
   static long solveB(String input) {
