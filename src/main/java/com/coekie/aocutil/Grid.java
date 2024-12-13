@@ -19,6 +19,10 @@ public record Grid(char[][] grid) {
     return grid[y][x];
   }
 
+  public boolean has(Location location, char c) {
+    return isInBounds(location) && get(location) == c;
+  }
+
   public void set(int x, int y, char c) {
     grid[y][x] = c;
   }

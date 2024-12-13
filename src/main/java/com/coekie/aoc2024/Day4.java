@@ -24,7 +24,7 @@ public class Day4 {
     String xmas = "XMAS";
     Location location = start;
     for (int i = 0; i < xmas.length(); i++, location = location.plus(direction)) {
-      if (!(grid.isInBounds(location) && grid.get(location) == xmas.charAt(i))) {
+      if (!grid.has(location, xmas.charAt(i))) {
         return false;
       }
     }
