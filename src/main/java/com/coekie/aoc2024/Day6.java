@@ -10,8 +10,7 @@ import java.util.Set;
 public class Day6 {
   static long solveA(String input) {
     Grid grid = Grid.parse(input);
-    Location start = grid.locations().filter(loc -> grid.get(loc) == '^').findAny()
-        .orElseThrow();
+    Location start = grid.findFirst('^');
     State state = new State(start, Direction.N);
     Set<Location> visited = new HashSet<>();
     while (state != null) {
@@ -36,9 +35,7 @@ public class Day6 {
 
   static long solveB(String input) {
     Grid grid = Grid.parse(input);
-    Location start = grid.locations()
-        .filter(loc -> grid.get(loc) == '^')
-        .findAny().orElseThrow();
+    Location start = grid.findFirst('^');
     State state = new State(start, Direction.N);
     Set<Location> visited = new HashSet<>();
     Set<Location> solutions = new HashSet<>();

@@ -54,6 +54,17 @@ public record Grid(char[][] grid) {
         .flatMap(x -> IntStream.range(0, height()).mapToObj(y -> new Location(x, y)));
   }
 
+  public Location findFirst(char c) {
+    for (int y = 0; y < grid.length; y++) {
+      for (int x = 0; x < grid[y].length; x++) {
+        if (grid[y][x] == c) {
+          return new Location(x, y);
+        }
+      }
+    }
+    throw new IllegalStateException("Cannot find '" + c + "' in:\n" + this);
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
